@@ -47,17 +47,17 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("swap_cam"):
 		swap_cam()
 	
-	if event.is_action_pressed("aim"):
-		enter_aim()
+	#if event.is_action_pressed("aim"):
+		#enter_aim()
+	#
+	#if event.is_action_released("aim"):
+		#exit_aim()
 	
-	if event.is_action_released("aim"):
-		exit_aim()
-	
-	if event.is_action_pressed("sprint"):
-		enter_sprint()
-	
-	if event.is_action_released("sprint"):
-		exit_sprint()
+	#if event.is_action_pressed("sprint"):
+		#enter_sprint()
+	#
+	#if event.is_action_released("sprint"):
+		#exit_sprint()
 
 #camera movement through mouse movement
 func camera_look(mouse_movement: Vector2) -> void:
@@ -139,3 +139,16 @@ func exit_sprint() -> void:
 	camera_tween.tween_property(camera, "fov", default_fov, sprint_speed)
 	camera_tween.tween_property(edge_spring_arm, "spring_length", default_edge_spring_arm_length * current_camera_align, aim_speed)
 	camera_tween.tween_property(rear_spring_arm, "spring_length", default_rear_spring_arm_length, aim_speed)
+
+
+func _on_sprint_sprint_start() -> void:
+	enter_sprint()
+
+func _on_sprint_end() -> void:
+	exit_sprint()
+
+func _on_aim_enter() -> void:
+	enter_aim()
+
+func _on_aim_exit() -> void:
+	exit_aim()
