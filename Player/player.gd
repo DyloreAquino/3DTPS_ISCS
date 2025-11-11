@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var player_mesh = $PlayerMesh
+var current_velocity = Vector2.ZERO
 
 func set_velocity_from_motion(vel: Vector3) -> void:
 	var walk_dir = Vector2(vel.x, -vel.z).rotated(-global_rotation.y).normalized()
