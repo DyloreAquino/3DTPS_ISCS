@@ -5,7 +5,8 @@ var current_velocity = Vector2.ZERO
 
 func set_velocity_from_motion(vel: Vector3) -> void:
 	var walk_dir = Vector2(vel.x, -vel.z).rotated(-global_rotation.y).normalized()
-	player_mesh.set_walk_direction(walk_dir)
+	current_velocity = lerp(current_velocity, walk_dir, 0.2)
+	player_mesh.set_walk_direction(current_velocity)
 	velocity.y = vel.y
 
 func _input(event):
