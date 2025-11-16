@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://nckclgtghic8"]
+[gd_scene load_steps=20 format=3 uid="uid://nckclgtghic8"]
 
 [ext_resource type="Script" uid="uid://csvlbjn1o20md" path="res://Player/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://3lohkj8fwjfc" path="res://Player/camera_system.gd" id="2_4ntmi"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://gsv2uo1wth52" path="res://Player/StateMachine/Player State Machine/States/aim_walk.gd" id="12_p5o4e"]
 [ext_resource type="Script" uid="uid://lpf6jfo4kioh" path="res://Player/UI/ammo_ui.gd" id="15_dkpta"]
 [ext_resource type="PackedScene" uid="uid://cswo48u1tqswm" path="res://Player/Weapon Manager/Weapons/pistol.tscn" id="15_lfmf2"]
-[ext_resource type="Resource" uid="uid://dfs2v4c1ybs8b" path="res://Player/Weapon Manager/Ammo/Ammo Resources/pistol_ammo.tres" id="16_lfmf2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 radius = 0.8
@@ -125,9 +124,8 @@ theme_override_font_sizes/font_size = 50
 text = "6"
 horizontal_alignment = 1
 
-[node name="Pistol" parent="." instance=ExtResource("15_lfmf2")]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0.5777786, 0.20852533, -0.15017983)
-current_ammo = ExtResource("16_lfmf2")
+[node name="pistol" parent="." instance=ExtResource("15_lfmf2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.55214226, 0.13932776, 0)
 
 [connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_end"]
 [connection signal="sprint_start" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_sprint_start"]

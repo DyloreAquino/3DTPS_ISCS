@@ -2,7 +2,7 @@ extends Node3D
 class_name Projectile
 
 func _set_weapon_projectile(_weapon: Pistol) -> void:
-	pass
+	_camera_ray_cast()
 
 func _camera_ray_cast(_range: float = 100) -> Vector3:
 	var viewport_size: Vector2i
