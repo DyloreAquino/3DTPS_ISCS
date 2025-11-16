@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Ammo" load_steps=2 format=3 uid="uid://dfs2v4c1ybs8b"]
+
+[ext_resource type="Script" uid="uid://dhnc54soqp7kh" path="res://Player/Weapon Manager/Ammo/ammo_resource.gd" id="1_gvn74"]
+
+[resource]
+script = ExtResource("1_gvn74")
+ammo_type = "pistol"
+metadata/_custom_type_script = "uid://dhnc54soqp7kh"
