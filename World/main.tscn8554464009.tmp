@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dud64bf18yimi"]
+[gd_scene load_steps=8 format=3 uid="uid://dud64bf18yimi"]
 
 [ext_resource type="PackedScene" uid="uid://nckclgtghic8" path="res://Player/player.tscn" id="1_njf5y"]
 
@@ -22,8 +22,6 @@ albedo_color = Color(6.738305e-07, 0.53012156, 0.53484803, 1)
 albedo_color = Color(0, 0.5294118, 0.53333336, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_njf5y"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_njf5y"]
 
 [node name="Main" type="Node3D"]
 
@@ -70,4 +68,3 @@ grow_vertical = 2
 position = Vector2(15, 16)
 scale = Vector2(30, 30)
 mesh = SubResource("SphereMesh_njf5y")
-texture = SubResource("PlaceholderTexture2D_njf5y")

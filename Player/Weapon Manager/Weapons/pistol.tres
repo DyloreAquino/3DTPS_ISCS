@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://bt4cfidf4046"]
+
+[ext_resource type="Script" uid="uid://wg6br67kgpdy" path="res://Player/Weapon Manager/weapon_resource.gd" id="1_0c5j4"]
+[ext_resource type="Resource" uid="uid://dfs2v4c1ybs8b" path="res://Player/Weapon Manager/Ammo/Ammo Resources/pistol_ammo.tres" id="1_4wnjy"]
+
+[resource]
+script = ExtResource("1_0c5j4")
+name = "pistol"
+hand_position = Vector3(0.5777786, 0.20852533, -0.15017983)
+hand_rotation = Vector3(0, 1.5707964, 0)
+ammo_type = ExtResource("1_4wnjy")
+metadata/_custom_type_script = "uid://wg6br67kgpdy"

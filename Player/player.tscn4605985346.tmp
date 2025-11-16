@@ -13,8 +13,6 @@
 [ext_resource type="Script" uid="uid://dl0plj7rl1hba" path="res://Player/StateMachine/Player State Machine/States/sprint_fall.gd" id="10_apopc"]
 [ext_resource type="Script" uid="uid://c4bd3bb8mtws4" path="res://Player/StateMachine/Player State Machine/States/aim_idle.gd" id="11_5htga"]
 [ext_resource type="Script" uid="uid://gsv2uo1wth52" path="res://Player/StateMachine/Player State Machine/States/aim_walk.gd" id="12_p5o4e"]
-[ext_resource type="Script" uid="uid://lpf6jfo4kioh" path="res://Player/UI/ammo_ui.gd" id="15_dkpta"]
-[ext_resource type="PackedScene" uid="uid://cswo48u1tqswm" path="res://Player/Weapon Manager/Weapons/pistol.tscn" id="15_lfmf2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 radius = 0.8
@@ -27,6 +25,14 @@ margin = 0.01
 [sub_resource type="SphereShape3D" id="SphereShape3D_btcbx"]
 margin = 0.01
 radius = 0.1
+
+[sub_resource type="GDScript" id="GDScript_p5o4e"]
+script/source = "extends StateMachine
+"
+
+[sub_resource type="GDScript" id="GDScript_gu6f8"]
+script/source = "
+"
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -64,9 +70,12 @@ spring_length = 1.5
 [node name="Camera3D" type="Camera3D" parent="Camera System/EdgeSpring/RearSpring"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0.17575788, 1.2836767)
 
-[node name="State Machine" type="Node" parent="."]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = SubResource("GDScript_p5o4e")
+start_state = NodePath("Unarmed")
 
 [node name="Unarmed" type="Node" parent="State Machine"]
+script = SubResource("GDScript_gu6f8")
 
 [node name="Unarmed State Machine" type="Node" parent="State Machine/Unarmed" node_paths=PackedStringArray("start_state")]
 script = ExtResource("3_btcbx")
@@ -99,33 +108,6 @@ script = ExtResource("11_5htga")
 
 [node name="AimWalk" type="Node" parent="State Machine/Unarmed/Unarmed State Machine"]
 script = ExtResource("12_p5o4e")
-
-[node name="Player UI" type="CanvasLayer" parent="."]
-
-[node name="AmmoUI" type="Control" parent="Player UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1148.0
-offset_bottom = 645.0
-script = ExtResource("15_dkpta")
-
-[node name="CurrentAmmo" type="Label" parent="Player UI/AmmoUI"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -34.0
-offset_top = -69.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 50
-text = "6"
-horizontal_alignment = 1
-
-[node name="pistol" parent="." instance=ExtResource("15_lfmf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.55214226, 0.13932776, 0)
 
 [connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_end"]
 [connection signal="sprint_start" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_sprint_start"]

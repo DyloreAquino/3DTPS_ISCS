@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://cswo48u1tqswm"]
+
+[ext_resource type="Script" uid="uid://bitpypoyl2k11" path="res://Player/Weapon Manager/Weapons/pistol.gd" id="1_olc4x"]
+[ext_resource type="Resource" uid="uid://dfs2v4c1ybs8b" path="res://Player/Weapon Manager/Ammo/Ammo Resources/pistol_ammo.tres" id="2_0hl17"]
+[ext_resource type="PackedScene" uid="uid://4bego6u3hdkv" path="res://Player/Weapon Manager/Projectiles/rigid_body_projectile.tscn" id="2_1nrpy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bgno"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_olc4x"]
+material = SubResource("StandardMaterial3D_4bgno")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1nrpy"]
+
+[node name="pistol" type="Node3D" node_paths=PackedStringArray("bullet_point")]
+script = ExtResource("1_olc4x")
+bullet_point = NodePath("Bullet Point")
+current_ammo = ExtResource("2_0hl17")
+
+[node name="RigidBodyProjectile" parent="." instance=ExtResource("2_1nrpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40853018, 0.02673982, -0.010406483)
+
+[node name="Bullet Point" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40853018, 0.02673982, 1.071021e-08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.59191525, 0, 0, 0, 0.16016458, 0, 0, 0, 0.11107155, 0, 0, 0)
+mesh = SubResource("BoxMesh_olc4x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.6311036e-09, -0.0317877, 0, -3.6311036e-09, 6.07363e-17, -0.069729134, 0.083069965, -1.3894845e-09, -3.0479572e-09, 0.3330078, 0.024932861, 0)
+mesh = SubResource("CylinderMesh_1nrpy")

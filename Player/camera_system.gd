@@ -46,18 +46,6 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("swap_cam"):
 		swap_cam()
-	
-	#if event.is_action_pressed("aim"):
-		#enter_aim()
-	#
-	#if event.is_action_released("aim"):
-		#exit_aim()
-	
-	#if event.is_action_pressed("sprint"):
-		#enter_sprint()
-	#
-	#if event.is_action_released("sprint"):
-		#exit_sprint()
 
 #camera movement through mouse movement
 func camera_look(mouse_movement: Vector2) -> void:
