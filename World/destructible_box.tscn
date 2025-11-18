@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi2mvvph63y8q"]
+[gd_scene load_steps=5 format=3 uid="uid://bi2mvvph63y8q"]
+
+[ext_resource type="Texture2D" uid="uid://b16t5f4e7b3qv" path="res://Images/base image.jpg" id="1_j1220"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2cjt"]
+albedo_texture = ExtResource("1_j1220")
 
 [sub_resource type="BoxMesh" id="BoxMesh_gysgv"]
+material = SubResource("StandardMaterial3D_a2cjt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j1220"]
 
