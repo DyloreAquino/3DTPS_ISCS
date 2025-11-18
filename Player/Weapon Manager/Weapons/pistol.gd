@@ -8,3 +8,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		print("Shoot")
 		$RigidBodyProjectile._set_weapon_projectile(self)
+	
+	if event.is_action_pressed("swap_cam"):
+		print("Swap")
+		$".".position.x = -position.x
