@@ -4,10 +4,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j1220"]
 
-[node name="Destructible Box" type="Node3D"]
+[node name="Destructible Box" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_gysgv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.045771837, 0)
 shape = SubResource("BoxShape3D_j1220")

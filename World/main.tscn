@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dud64bf18yimi"]
+[gd_scene load_steps=10 format=3 uid="uid://dud64bf18yimi"]
 
 [ext_resource type="PackedScene" uid="uid://nckclgtghic8" path="res://Player/player.tscn" id="1_njf5y"]
+[ext_resource type="PackedScene" uid="uid://bi2mvvph63y8q" path="res://World/destructible_box.tscn" id="2_qf6be"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -71,3 +72,6 @@ position = Vector2(15, 16)
 scale = Vector2(30, 30)
 mesh = SubResource("SphereMesh_njf5y")
 texture = SubResource("PlaceholderTexture2D_njf5y")
+
+[node name="Destructible Box" parent="." instance=ExtResource("2_qf6be")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56484, 1.4395702, -2.9980962)
