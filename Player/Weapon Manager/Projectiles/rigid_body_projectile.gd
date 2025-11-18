@@ -15,8 +15,9 @@ func launch_rigid_body_projectile(point: Vector3, weapon: Pistol, bullet: Packed
 	_projectile.top_level = false
 	_projectile.global_position = weapon.bullet_point.global_position
 	
-	get_tree().current_scene.add_child(_projectile)
 	_projectile.look_at(point)
 	
 	var direction: Vector3 = (point - weapon.bullet_point.global_position).normalized()
 	_projectile.set_linear_velocity(direction * projectile_velocity)
+	
+	get_tree().current_scene.add_child(_projectile)

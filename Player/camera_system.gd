@@ -79,7 +79,7 @@ func set_rear_spring_arm_pos(pos: float, speed: float) -> void:
 	camera_tween.set_ease(Tween.EASE_OUT)
 	camera_tween = get_tree().create_tween()
 	camera_tween.tween_property(edge_spring_arm, "spring_length", pos , speed)
-	
+
 func enter_aim() -> void:
 	if camera_tween:
 		camera_tween.kill()
