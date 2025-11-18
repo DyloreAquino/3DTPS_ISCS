@@ -51,10 +51,10 @@ func _input(event: InputEvent) -> void:
 func camera_look(mouse_movement: Vector2) -> void:
 	camera_rotation += mouse_movement
 	transform.basis = Basis()
-	#change the green thingies to character if you want the old one
-	$EdgeSpring/RearSpring/Camera3D.transform.basis = Basis()
-	$EdgeSpring/RearSpring/Camera3D.rotate_object_local(Vector3(0, 1, 0), -camera_rotation.x)
-	$EdgeSpring/RearSpring/Camera3D.rotate_object_local(Vector3(1, 0, 0), -camera_rotation.y)
+	#change it to character for old
+	character.transform.basis = Basis()
+	character.rotate_object_local(Vector3(0, 1, 0), -camera_rotation.x)
+	character.rotate_object_local(Vector3(1, 0, 0), -camera_rotation.y)
 	camera_rotation.y = clamp(camera_rotation.y, -max_y_rotation, max_y_rotation)
 	
 #cam swap
