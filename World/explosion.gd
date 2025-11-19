@@ -1,8 +1,9 @@
 extends Node3D
 
-func _ready() -> void:
-	$Debris.restart()
+func emit_explosion(hit_enemy = false):
 	$Fire.restart()
+	if hit_enemy:
+		$Debris.restart()
 
 func _on_cpu_particles_3d_finished() -> void:
 	print("done")

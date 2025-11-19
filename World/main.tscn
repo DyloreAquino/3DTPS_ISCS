@@ -110,5 +110,5 @@ scale = Vector2(10, 10)
 mesh = SubResource("SphereMesh_njf5y")
 texture = SubResource("PlaceholderTexture2D_njf5y")
 
-[node name="Destructible Box" parent="." instance=ExtResource("2_qf6be")]
+[node name="Destructible Box" parent="." groups=["Enemy"] instance=ExtResource("2_qf6be")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56484, 2.1445057, -2.9980962)

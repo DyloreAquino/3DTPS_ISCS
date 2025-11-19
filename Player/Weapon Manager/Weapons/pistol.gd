@@ -16,7 +16,7 @@ func _process(delta):
 	if Input.is_action_pressed("shoot"):
 		if isShooting:
 			shootTimer += delta
-			if shootTimer > 1:
+			if shootTimer > 0.15:
 				$RigidBodyProjectile._set_weapon_projectile(self)
 				shootTimer = 0.0
 		else:
