@@ -3,7 +3,7 @@ class_name Motion
 
 signal velocity_updated(vel: Vector3)
 
-@onready var player_mesh = $"../../PlayerMesh"
+@onready var player_mesh = $"../../../../PlayerMesh"
 
 var speed: float
 var sprint_spd: float

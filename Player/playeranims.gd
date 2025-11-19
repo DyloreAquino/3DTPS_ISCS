@@ -20,3 +20,15 @@ func get_root_pos():
 func _physics_process(delta):
 	a_tree.set("parameters/TorsoState/blend_position", current_aim_state)
 	a_tree.set("parameters/AimState/blend_position", current_aim_state)
+
+func _on_sprint_sprint_end():
+	a_tree.set("parameters/TimeScale/scale", 1.5)
+
+func _on_sprint_sprint_start():
+	a_tree.set("parameters/TimeScale/scale", 2.1)
+
+func _on_aim_enter():
+	a_tree.set("parameters/TimeScale/scale", 0.7)
+
+func _on_aim_exit():
+	a_tree.set("parameters/TimeScale/scale", 1.5)

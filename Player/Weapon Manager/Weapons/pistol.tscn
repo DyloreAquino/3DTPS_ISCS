@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cswo48u1tqswm"]
+[gd_scene load_steps=9 format=3 uid="uid://cswo48u1tqswm"]
 
 [ext_resource type="Script" uid="uid://bitpypoyl2k11" path="res://Player/Weapon Manager/Weapons/pistol.gd" id="1_olc4x"]
 [ext_resource type="Resource" uid="uid://dfs2v4c1ybs8b" path="res://Player/Weapon Manager/Ammo/Ammo Resources/pistol_ammo.tres" id="2_0hl17"]
@@ -9,6 +9,14 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_olc4x"]
 material = SubResource("StandardMaterial3D_4bgno")
+size = Vector3(2, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hl17"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t82bd"]
+material = SubResource("StandardMaterial3D_0hl17")
+size = Vector3(0.3, 0.4, 0.2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1nrpy"]
 
@@ -21,8 +29,12 @@ current_ammo = ExtResource("2_0hl17")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40853018, 0.02673982, 1.071021e-08)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.59191525, 0, 0, 0, 0.16016458, 0, 0, 0, 0.11107155, 0, 0, 0)
+transform = Transform3D(0.59191525, 0, 0, 0, 0.16016458, 0, 0, 0, 0.11107155, -0.27107644, 0, 0)
 mesh = SubResource("BoxMesh_olc4x")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5120935, -0.14600065, 0)
+mesh = SubResource("BoxMesh_t82bd")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.6311036e-09, -0.0317877, 0, -3.6311036e-09, 6.07363e-17, -0.069729134, 0.083069965, -1.3894845e-09, -3.0479572e-09, 0.3330078, 0.024932861, 0)

@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://nckclgtghic8"]
+[gd_scene load_steps=19 format=3 uid="uid://nckclgtghic8"]
 
 [ext_resource type="Script" uid="uid://csvlbjn1o20md" path="res://Player/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://3lohkj8fwjfc" path="res://Player/camera_system.gd" id="2_4ntmi"]
-[ext_resource type="PackedScene" uid="uid://v1o2g6r43h2l" path="res://Player/playermesh.tscn" id="2_gu6f8"]
+[ext_resource type="PackedScene" uid="uid://cydof5ciwcqy8" path="res://Player/playermesh.tscn" id="2_gu6f8"]
 [ext_resource type="Script" uid="uid://6qg5vu7djvl7" path="res://Player/StateMachine/Player State Machine/player_state_machine.gd" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://7qa82f57cuvs" path="res://Player/StateMachine/Player State Machine/States/idle.gd" id="4_vtle1"]
 [ext_resource type="Script" uid="uid://b1mjgxce8jevu" path="res://Player/StateMachine/Player State Machine/States/run.gd" id="5_od3ui"]
@@ -39,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7814941, 0)
 shape = SubResource("CapsuleShape3D_gu6f8")
 
 [node name="Camera System" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3027058, 3.0253518, 4.473629)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4892652, 3.4684308, 4.473629)
 script = ExtResource("2_4ntmi")
 aim_edge_spring_length = 0.8
 aim_speed = 0.4
@@ -99,7 +99,7 @@ script = ExtResource("11_5htga")
 script = ExtResource("12_p5o4e")
 
 [node name="pistol" parent="." instance=ExtResource("15_lfmf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.55214226, 0.13932776, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4352491, 2.6142473, -1.2203077)
 
 [node name="RayCastGun" type="RayCast3D" parent="pistol"]
 transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0.3673228, 0.02558668, 0)
@@ -108,10 +108,16 @@ collide_with_areas = true
 debug_shape_custom_color = Color(0.7738555, 2.23808e-06, 9.62615e-07, 1)
 script = ExtResource("15_dkpta")
 
+[connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="PlayerMesh" method="_on_sprint_sprint_end"]
 [connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_end"]
+[connection signal="sprint_start" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="PlayerMesh" method="_on_sprint_sprint_start"]
 [connection signal="sprint_start" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_sprint_start"]
 [connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/SprintFall" to="Camera System" method="_on_sprint_end"]
+[connection signal="aim_enter" from="State Machine/Unarmed/Unarmed State Machine/AimIdle" to="PlayerMesh" method="_on_aim_enter"]
 [connection signal="aim_enter" from="State Machine/Unarmed/Unarmed State Machine/AimIdle" to="Camera System" method="_on_aim_enter"]
+[connection signal="aim_exit" from="State Machine/Unarmed/Unarmed State Machine/AimIdle" to="PlayerMesh" method="_on_aim_exit"]
 [connection signal="aim_exit" from="State Machine/Unarmed/Unarmed State Machine/AimIdle" to="Camera System" method="_on_aim_exit"]
+[connection signal="aim_enter" from="State Machine/Unarmed/Unarmed State Machine/AimWalk" to="PlayerMesh" method="_on_aim_enter"]
 [connection signal="aim_enter" from="State Machine/Unarmed/Unarmed State Machine/AimWalk" to="Camera System" method="_on_aim_enter"]
+[connection signal="aim_exit" from="State Machine/Unarmed/Unarmed State Machine/AimWalk" to="PlayerMesh" method="_on_aim_exit"]
 [connection signal="aim_exit" from="State Machine/Unarmed/Unarmed State Machine/AimWalk" to="Camera System" method="_on_aim_exit"]
