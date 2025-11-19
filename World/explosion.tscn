@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://c670dn754rb1h"]
+[gd_scene load_steps=3 format=3 uid="uid://c670dn754rb1h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yl2ro"]
+albedo_color = Color(0.40069774, 0.40069774, 0.40069768, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f5f08"]
+material = SubResource("StandardMaterial3D_yl2ro")
 
 [node name="Explosion" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 10
+lifetime = 2.5
+speed_scale = 2.5
+mesh = SubResource("SphereMesh_f5f08")
+spread = 90.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+color = Color(0.20871013, 0.20871016, 0.20871007, 1)
