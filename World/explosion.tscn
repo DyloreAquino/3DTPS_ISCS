@@ -1,26 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://c670dn754rb1h"]
+[gd_scene load_steps=8 format=3 uid="uid://c670dn754rb1h"]
 
 [ext_resource type="Script" uid="uid://53xk1lkvbya3" path="res://World/explosion.gd" id="1_f5f08"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yl2ro"]
-albedo_color = Color(0.40069774, 0.40069774, 0.40069768, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5f08"]
+albedo_color = Color(0.5525441, 0, 0.018730178, 1)
+emission_enabled = true
+emission = Color(1, 0.15134397, 0.10833255, 1)
+emission_energy_multiplier = 2.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_f5f08"]
-material = SubResource("StandardMaterial3D_yl2ro")
+[sub_resource type="CylinderMesh" id="CylinderMesh_8u627"]
+material = SubResource("StandardMaterial3D_f5f08")
+top_radius = 0.1
+bottom_radius = 0.0
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8u627"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_miuvc"]
+material = SubResource("StandardMaterial3D_8u627")
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Curve" id="Curve_f5f08"]
+_data = [Vector2(0.110465124, 0.17977536), 0.0, 0.0, 0, 0, Vector2(0.2674419, 1), 0.0, 0.0, 0, 0, Vector2(0.83720934, 0.078651786), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_8u627"]
+colors = PackedColorArray(0.58431375, 0.3137255, 0.101960786, 1, 0.9714019, 0.73427904, 8.085966e-06, 1)
 
 [node name="Explosion" type="Node3D"]
 script = ExtResource("1_f5f08")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="Debris" type="CPUParticles3D" parent="."]
 emitting = false
 amount = 20
-lifetime = 1.5
+lifetime = 10.0
 one_shot = true
-speed_scale = 2.5
-mesh = SubResource("SphereMesh_f5f08")
+explosiveness = 1.0
+fixed_fps = 60
+mesh = SubResource("CylinderMesh_8u627")
+particle_flag_align_y = true
 spread = 180.0
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
+initial_velocity_min = 12.0
+initial_velocity_max = 13.0
 color = Color(0.20871013, 0.20871016, 0.20871007, 1)
 
-[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]
+[node name="Fire" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 12
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+mesh = SubResource("SphereMesh_miuvc")
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_f5f08")
+color = Color(0.58296436, 0.31227174, 0.10091331, 1)
+color_ramp = SubResource("Gradient_8u627")
+
+[connection signal="finished" from="Debris" to="." method="_on_cpu_particles_3d_finished"]
+[connection signal="finished" from="Fire" to="." method="_on_cpu_particles_3d_finished"]
