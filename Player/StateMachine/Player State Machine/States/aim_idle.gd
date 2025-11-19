@@ -5,6 +5,7 @@ signal aim_exit
 
 func _enter() -> void:
 	aim_enter.emit()
+	player_mesh.set_aim_state(-1)
 	print(name)
 
 func _state_input(event: InputEvent) -> void:
@@ -26,3 +27,6 @@ func _update(delta: float) -> void:
 	if not is_on_floor():
 		aim_exit.emit()
 		finished.emit("Fall")
+
+func _exit() -> void:
+	player_mesh.set_aim_state(1)

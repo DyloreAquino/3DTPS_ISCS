@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://csvlbjn1o20md" path="res://Player/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://3lohkj8fwjfc" path="res://Player/camera_system.gd" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://v1o2g6r43h2l" path="res://Player/playermesh.tscn" id="2_gu6f8"]
 [ext_resource type="Script" uid="uid://6qg5vu7djvl7" path="res://Player/StateMachine/Player State Machine/player_state_machine.gd" id="3_btcbx"]
-[ext_resource type="Resource" uid="uid://biq2jbjvs6vlc" path="res://Player/player_movement_stats.tres" id="4_p5o4e"]
 [ext_resource type="Script" uid="uid://7qa82f57cuvs" path="res://Player/StateMachine/Player State Machine/States/idle.gd" id="4_vtle1"]
 [ext_resource type="Script" uid="uid://b1mjgxce8jevu" path="res://Player/StateMachine/Player State Machine/States/run.gd" id="5_od3ui"]
 [ext_resource type="Script" uid="uid://dwr68lnl58h2q" path="res://Player/StateMachine/Player State Machine/States/jump.gd" id="6_00tjw"]
@@ -16,10 +16,9 @@
 [ext_resource type="Script" uid="uid://pk1x53e3tenj" path="res://Player/raycast.gd" id="15_dkpta"]
 [ext_resource type="PackedScene" uid="uid://cswo48u1tqswm" path="res://Player/Weapon Manager/Weapons/pistol.tscn" id="15_lfmf2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
-radius = 0.8
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_h2yge"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gu6f8"]
+radius = 0.6586914
+height = 3.5629883
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4ntmi"]
 margin = 0.01
@@ -29,25 +28,19 @@ margin = 0.01
 radius = 0.1
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
 script = ExtResource("1_v0iea")
 
+[node name="PlayerMesh" parent="." instance=ExtResource("2_gu6f8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_0xm2m")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7814941, 0)
+shape = SubResource("CapsuleShape3D_gu6f8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 2
-mesh = SubResource("CapsuleMesh_h2yge")
-skeleton = NodePath("../CollisionShape3D")
-
-[node name="Camera System" type="Node3D" parent="." node_paths=PackedStringArray("character", "edge_spring_arm", "rear_spring_arm", "camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99107003, 1.2223461)
+[node name="Camera System" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3027058, 3.0253518, 4.473629)
 script = ExtResource("2_4ntmi")
-character = NodePath("..")
-edge_spring_arm = NodePath("EdgeSpring")
-rear_spring_arm = NodePath("EdgeSpring/RearSpring")
-camera = NodePath("EdgeSpring/RearSpring/Camera3D")
 aim_edge_spring_length = 0.8
 aim_speed = 0.4
 sprint_fov = 100.0
@@ -76,7 +69,6 @@ debug_shape_custom_color = Color(0.7738555, 2.23808e-06, 9.62615e-07, 1)
 
 [node name="Unarmed State Machine" type="Node" parent="State Machine/Unarmed" node_paths=PackedStringArray("start_state")]
 script = ExtResource("3_btcbx")
-player_movement_stats = ExtResource("4_p5o4e")
 start_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="State Machine/Unarmed/Unarmed State Machine"]

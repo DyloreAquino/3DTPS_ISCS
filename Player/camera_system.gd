@@ -1,9 +1,10 @@
 extends Node3D
 
-@export var character: CharacterBody3D
-@export var edge_spring_arm: SpringArm3D
-@export var rear_spring_arm: SpringArm3D
-@export var camera: Camera3D
+@onready var character = $".."
+@onready var edge_spring_arm = $EdgeSpring
+@onready var rear_spring_arm = $EdgeSpring/RearSpring
+@onready var camera = $EdgeSpring/RearSpring/Camera3D
+
 @export var camera_align_speed: float = 0.2
 @export var aim_rear_spring_length: float = 0.5
 @export var aim_edge_spring_length: float = 0.5
