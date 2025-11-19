@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dabd5ppudandn"]
+[gd_scene load_steps=5 format=3 uid="uid://dabd5ppudandn"]
+
+[ext_resource type="Script" uid="uid://ldfi3b7jsp3j" path="res://Player/Weapon Manager/Projectiles/pistol_bullet.gd" id="1_vdpqf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4l5th"]
 albedo_color = Color(0.49187428, 0.4918744, 0, 1)
@@ -14,6 +16,7 @@ material = SubResource("StandardMaterial3D_4l5th")
 collision_layer = 4
 collision_mask = 13
 continuous_cd = true
+script = ExtResource("1_vdpqf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 0, 0.0005964227, 0.002110958)
@@ -22,3 +25,9 @@ mesh = SubResource("CapsuleMesh_vdpqf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 0, 0.0005964227, 0.002110958)
 shape = SubResource("CapsuleShape3D_6fg75")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
