@@ -2,13 +2,16 @@ extends Node3D
 
 @onready var a_tree = $AnimationTree
 @export var lookattarget : Node3D
+@onready var head = $Armature/Skeleton3D/Head
+@onready var torso = $Armature/Skeleton3D/Torso
+@onready var arms = $Armature/Skeleton3D/Arms
+@onready var camera_ray = $"../Camera System/EdgeSpring/RearSpring/Camera3D/RayCastCenter"
+
 
 var current_aim_state : float = 0.0
 
 func _ready():
-	print(lookattarget)
 	top_level = true
-	$Armature/Skeleton3D/LookAtModifier3D.target_node = get_path_to(lookattarget)
 
 func set_walk_direction(dir : Vector2):
 	a_tree.set("parameters/WalkDirection/blend_position", dir)
@@ -26,7 +29,11 @@ func get_root_pos():
 func _process(delta):
 	global_position = get_parent().global_position
 	global_rotation.y = get_parent().global_rotation.y + PI
-
+	
+	arms.global_rotation.x = -lookattarget.global_rotation.x
+	torso.global_rotation.x = -lookattarget.global_rotation.x
+	head.global_rotation.x = -lookattarget.global_rotation.x
+	
 func _physics_process(delta):
 	a_tree.set("parameters/TorsoState/blend_position", current_aim_state)
 	a_tree.set("parameters/AimState/blend_position", current_aim_state)

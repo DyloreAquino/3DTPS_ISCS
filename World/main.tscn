@@ -112,3 +112,6 @@ texture = SubResource("PlaceholderTexture2D_njf5y")
 
 [node name="Destructible Box" parent="." groups=["Enemy"] instance=ExtResource("2_qf6be")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56484, 2.1445057, -2.9980962)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1905518, 9.361572)

@@ -20,7 +20,7 @@ var max_y_rotation: float = 1.1
 #change camera side
 var camera_tween: Tween
 
-enum CameraAlignment {LEFT = -1, RIGHT = 1, CENTER = 0}
+enum CameraAlignment {LEFT = -4, RIGHT = 1, CENTER = 0}
 var current_camera_align: int = CameraAlignment.RIGHT
 
 #maintains a default position
