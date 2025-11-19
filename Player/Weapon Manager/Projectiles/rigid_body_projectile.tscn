@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dabd5ppudandn" path="res://Player/Weapon Manager/Projectiles/pistol_bullet.tscn" id="2_1r8dl"]
 
 [node name="RigidBodyProjectile" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40853018, 0.02673982, 1.071021e-08)
 script = ExtResource("1_8c5a0")
 rigid_body_bullet = ExtResource("2_1r8dl")
 metadata/_custom_type_script = "uid://8etftdrf8tmp"

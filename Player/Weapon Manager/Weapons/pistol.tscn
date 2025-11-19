@@ -17,9 +17,6 @@ script = ExtResource("1_olc4x")
 bullet_point = NodePath("Bullet Point")
 current_ammo = ExtResource("2_0hl17")
 
-[node name="RigidBodyProjectile" parent="." instance=ExtResource("2_1nrpy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40853018, 0.02673982, -0.010406483)
-
 [node name="Bullet Point" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40853018, 0.02673982, 1.071021e-08)
 
@@ -30,3 +27,5 @@ mesh = SubResource("BoxMesh_olc4x")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.6311036e-09, -0.0317877, 0, -3.6311036e-09, 6.07363e-17, -0.069729134, 0.083069965, -1.3894845e-09, -3.0479572e-09, 0.3330078, 0.024932861, 0)
 mesh = SubResource("CylinderMesh_1nrpy")
+
+[node name="RigidBodyProjectile" parent="." instance=ExtResource("2_1nrpy")]

@@ -51,6 +51,7 @@ func _input(event: InputEvent) -> void:
 func camera_look(mouse_movement: Vector2) -> void:
 	camera_rotation += mouse_movement
 	transform.basis = Basis()
+	#change it to character for old
 	character.transform.basis = Basis()
 	character.rotate_object_local(Vector3(0, 1, 0), -camera_rotation.x)
 	character.rotate_object_local(Vector3(1, 0, 0), -camera_rotation.y)
@@ -75,11 +76,11 @@ func set_camera_align(alignment: CameraAlignment) -> void:
 func set_rear_spring_arm_pos(pos: float, speed: float) -> void:
 	if camera_tween:
 		camera_tween.kill()
+	camera_tween = get_tree().create_tween()
 	camera_tween.set_trans(Tween.TRANS_EXPO)
 	camera_tween.set_ease(Tween.EASE_OUT)
-	camera_tween = get_tree().create_tween()
 	camera_tween.tween_property(edge_spring_arm, "spring_length", pos , speed)
-	
+
 func enter_aim() -> void:
 	if camera_tween:
 		camera_tween.kill()
