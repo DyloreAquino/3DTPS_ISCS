@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://nckclgtghic8"]
+[gd_scene load_steps=20 format=3 uid="uid://nckclgtghic8"]
 
 [ext_resource type="Script" uid="uid://csvlbjn1o20md" path="res://Player/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://3lohkj8fwjfc" path="res://Player/camera_system.gd" id="2_4ntmi"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://pk1x53e3tenj" path="res://Player/raycast.gd" id="15_dkpta"]
 [ext_resource type="PackedScene" uid="uid://cswo48u1tqswm" path="res://Player/Weapon Manager/Weapons/pistol.tscn" id="15_lfmf2"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dkpta"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gu6f8"]
 radius = 0.6586914
 height = 3.5629883
@@ -31,8 +33,15 @@ radius = 0.1
 collision_layer = 2
 script = ExtResource("1_v0iea")
 
-[node name="PlayerMesh" parent="." instance=ExtResource("2_gu6f8")]
+[node name="PlayerMesh" parent="." node_paths=PackedStringArray("lookattarget") instance=ExtResource("2_gu6f8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+lookattarget = NodePath("../LookAtTarget")
+
+[node name="LookAtTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.508957, 3.6603262, -4.0555735)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LookAtTarget"]
+mesh = SubResource("CapsuleMesh_dkpta")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7814941, 0)
