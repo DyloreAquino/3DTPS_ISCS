@@ -53,6 +53,40 @@ calculate_tangents = false
 size = Vector3(291.10034, 30, 238.8807)
 material = SubResource("StandardMaterial3D_ig7tw")
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.9896197, 0, 0, 0, 0.44631925, 0, 0, 0, 0.071091525, 147.26897, 11.361734, 0.8642354)
+layers = 0
+operation = 2
+calculate_tangents = false
+size = Vector3(104.487724, 31.583984, 710.19324)
+material = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(0.114635006, 0, 0, 0, 0.35482225, 0, 0, 0, 0.124625415, 0, 0, 0)
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(16.358149, 0, 0, 0, 1, 0, 0, 0, 13.702125, 337.45746, 15.773377, 0)
+calculate_tangents = false
+size = Vector3(21.442871, 32.546753, 20)
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(3.0073392, 0, 0, 0, 1.0074282, 0, 0, 0, 0.31214198, 353.35965, 19.6737, 0.86423504)
+layers = 0
+operation = 2
+calculate_tangents = false
+size = Vector3(104.487724, 31.583984, 710.19324)
+material = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1.9896197, 0, 0, 0, 0.44631925, 0, 0, 0, 0.071091525, 147.26897, 12.47348, 0.8642354)
+layers = 0
+operation = 2
+calculate_tangents = false
+size = Vector3(104.487724, 31.583984, 710.19324)
+material = SubResource("StandardMaterial3D_ig7tw")
+
 [node name="Player" parent="." instance=ExtResource("1_njf5y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5889673, 0)
 
