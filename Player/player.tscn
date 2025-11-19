@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://nckclgtghic8"]
+[gd_scene load_steps=21 format=3 uid="uid://nckclgtghic8"]
 
 [ext_resource type="Script" uid="uid://csvlbjn1o20md" path="res://Player/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://3lohkj8fwjfc" path="res://Player/camera_system.gd" id="2_4ntmi"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://gsv2uo1wth52" path="res://Player/StateMachine/Player State Machine/States/aim_walk.gd" id="12_p5o4e"]
 [ext_resource type="Script" uid="uid://pk1x53e3tenj" path="res://Player/raycast.gd" id="15_dkpta"]
 [ext_resource type="PackedScene" uid="uid://cswo48u1tqswm" path="res://Player/Weapon Manager/Weapons/pistol.tscn" id="15_lfmf2"]
+[ext_resource type="Script" uid="uid://cjh5r72mw807" path="res://Player/ray_cast_gun_intersection.gd" id="17_pisgm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 radius = 0.8
@@ -64,6 +65,12 @@ spring_length = 1.5
 [node name="Camera3D" type="Camera3D" parent="Camera System/EdgeSpring/RearSpring"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0.17575788, 1.2836767)
 
+[node name="RayCastCam" type="RayCast3D" parent="Camera System/EdgeSpring/RearSpring/Camera3D"]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, -6.4611435e-05, 0.004065752, -1.8452656)
+target_position = Vector3(0, -100, 0)
+collision_mask = 9
+debug_shape_custom_color = Color(0.7738555, 2.23808e-06, 9.62615e-07, 1)
+
 [node name="State Machine" type="Node" parent="."]
 
 [node name="Unarmed" type="Node" parent="State Machine"]
@@ -107,8 +114,14 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.55
 transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0.3673228, 0.02558668, 0)
 target_position = Vector3(0, 0, 0)
 collision_mask = 9
-debug_shape_custom_color = Color(0.7738555, 2.23808e-06, 9.62615e-07, 1)
+debug_shape_custom_color = Color(0.623189, 0.12190723, 0.6978733, 1)
 script = ExtResource("15_dkpta")
+
+[node name="RayCastGun2" type="RayCast3D" parent="pistol"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.3673228, 0.02558668, 0)
+collision_mask = 9
+debug_shape_custom_color = Color(6.738305e-07, 0.43005627, 0.67007655, 1)
+script = ExtResource("17_pisgm")
 
 [connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_end"]
 [connection signal="sprint_start" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_sprint_start"]

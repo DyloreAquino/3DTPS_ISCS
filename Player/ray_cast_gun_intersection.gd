@@ -2,10 +2,12 @@ extends RayCast3D
 
 var current: Vector3
 
+@onready var camera_ray: RayCast3D = $"../../Camera System/EdgeSpring/RearSpring/Camera3D/RayCastCam"
+
 func _process(delta: float) -> void:
-	current.x = _camera_ray_cast().x
-	current.y = _camera_ray_cast().y * -180
-	current.z = _camera_ray_cast().z
+	current.x = camera_ray.get_collision_point().x
+	current.y = camera_ray.get_collision_point().y * -90
+	current.z = camera_ray.get_collision_point().z
 	self.target_position = current
 
 func _camera_ray_cast(_range: float = 100) -> Vector3:
@@ -22,7 +24,7 @@ func _camera_ray_cast(_range: float = 100) -> Vector3:
 		
 	var camera: Camera3D = get_viewport().get_camera_3d()
 	
-	var ray_origin: Vector3 = camera.project_ray_origin(viewport_size / 2)
+	var ray_origin: Vector3 = self.position
 	var ray_end: Vector3 = ray_origin + camera.project_ray_normal(viewport_size / 2) * _range 
 	
 	var new_ray_query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
