@@ -11,4 +11,3 @@ func _on_body_entered(body: Node) -> void:
 	get_tree().current_scene.add_child(plosion)
 	queue_free()
 	
-	

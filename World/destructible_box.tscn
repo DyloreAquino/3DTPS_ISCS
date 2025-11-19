@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi2mvvph63y8q"]
+[gd_scene load_steps=6 format=3 uid="uid://bi2mvvph63y8q"]
 
+[ext_resource type="Script" uid="uid://b1u7hqpstt4oa" path="res://World/destructible_box.gd" id="1_a2cjt"]
 [ext_resource type="Texture2D" uid="uid://b16t5f4e7b3qv" path="res://Images/base image.jpg" id="1_j1220"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2cjt"]
@@ -12,8 +13,11 @@ material = SubResource("StandardMaterial3D_a2cjt")
 
 [node name="Destructible Box" type="RigidBody3D"]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 6
 continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 60
+script = ExtResource("1_a2cjt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_gysgv")
@@ -21,3 +25,5 @@ mesh = SubResource("BoxMesh_gysgv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.045771837, 0)
 shape = SubResource("BoxShape3D_j1220")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

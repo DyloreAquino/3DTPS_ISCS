@@ -1,13 +1,17 @@
 extends RayCast3D
 
-var initial_position_x = self.position.x
-var initial_position_y = self.position.y
-var initial_position_z = self.position.z
+var current: Vector3
 
-func _physics_process(delta: float) -> void:
-	self.target_position.x = _camera_ray_cast().x
-	self.target_position.y = _camera_ray_cast().y * -180
-	self.target_position.z = _camera_ray_cast().z
+func _process(delta: float) -> void:
+	if self.is_colliding():
+		current.x = self.get_collision_point().x
+		current.y = self.get_collision_point().y * -180
+		current.z = self.get_collision_point().z
+	else:
+		current.x = _camera_ray_cast().x
+		current.y = _camera_ray_cast().y * -180
+		current.z = _camera_ray_cast().z
+	self.target_position = current
 
 func _camera_ray_cast(_range: float = 100) -> Vector3:
 	var viewport_size: Vector2i
