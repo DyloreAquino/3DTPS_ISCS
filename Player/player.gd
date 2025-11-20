@@ -20,3 +20,6 @@ func _process(delta: float) -> void:
 	velocity.x = -target_velocity.x
 	velocity.z = -target_velocity.z
 	move_and_slide()
+
+func _physics_process(delta):
+	get_tree().call_group("Enemy", "update_target_location", self.global_position)

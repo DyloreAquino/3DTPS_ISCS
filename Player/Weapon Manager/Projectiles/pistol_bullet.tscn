@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dabd5ppudandn"]
+[gd_scene load_steps=7 format=3 uid="uid://dabd5ppudandn"]
 
 [ext_resource type="Script" uid="uid://ldfi3b7jsp3j" path="res://Player/Weapon Manager/Projectiles/pistol_bullet.gd" id="1_vdpqf"]
+[ext_resource type="AudioStream" uid="uid://dcxiloqhoffi8" path="res://Assets/audio/080998_bullet-hit-39870.mp3" id="2_kaddk"]
+[ext_resource type="AudioStream" uid="uid://ctrnngh4m6tmh" path="res://Assets/audio/small-explosion-94980.mp3" id="3_jvhi3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4l5th"]
 albedo_color = Color(0.49187428, 0.4918744, 0, 1)
@@ -32,6 +34,12 @@ shape = SubResource("CapsuleShape3D_6fg75")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="hit_not_enemy" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_kaddk")
+
+[node name="hit_enemy" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_jvhi3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds7nxbf1tk12l"
-path.s3tc="res://.godot/imported/red-fabric-cloth-texture-background-detail-textile-material-close-up-133929668.webp-c5f85b399ac948915420a38f96b53bbb.s3tc.ctex"
+uid="uid://dftopt0tlnkdb"
+path.s3tc="res://.godot/imported/360_F_188873545_DFE0y94X58bgP6bYSGvU1I8oXZWOicxl.jpg-7b77c46497c9b349a5ad0e75b74158db.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/red-fabric-cloth-texture-background-detail-textile-material-close-up-133929668.webp"
-dest_files=["res://.godot/imported/red-fabric-cloth-texture-background-detail-textile-material-close-up-133929668.webp-c5f85b399ac948915420a38f96b53bbb.s3tc.ctex"]
+source_file="res://Assets/360_F_188873545_DFE0y94X58bgP6bYSGvU1I8oXZWOicxl.jpg"
+dest_files=["res://.godot/imported/360_F_188873545_DFE0y94X58bgP6bYSGvU1I8oXZWOicxl.jpg-7b77c46497c9b349a5ad0e75b74158db.s3tc.ctex"]
 
 [params]
 

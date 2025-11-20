@@ -1,23 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi2mvvph63y8q"]
+[gd_scene load_steps=9 format=3 uid="uid://c5sf4r3fp5e3"]
 
-[ext_resource type="Texture2D" uid="uid://b16t5f4e7b3qv" path="res://Images/base image.jpg" id="1_j1220"]
+[ext_resource type="Script" uid="uid://d07tn3gg6wpin" path="res://World/destructible_box.gd" id="1_f30tq"]
+[ext_resource type="Texture2D" uid="uid://ds7nxbf1tk12l" path="res://Assets/red-fabric-cloth-texture-background-detail-textile-material-close-up-133929668.webp" id="1_xe0oq"]
+[ext_resource type="Script" uid="uid://bs6mj5trtgep3" path="res://World/area_3d.gd" id="2_a2cjt"]
+[ext_resource type="AudioStream" uid="uid://b7b71mjkblbpl" path="res://Assets/audio/wooden_crate_smash-4-387903.mp3" id="3_3ii2w"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2cjt"]
-albedo_texture = ExtResource("1_j1220")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy83q"]
+albedo_color = Color(0.6872149, 0.68721503, 0.6872149, 1)
+albedo_texture = ExtResource("1_xe0oq")
 
-[sub_resource type="BoxMesh" id="BoxMesh_gysgv"]
-material = SubResource("StandardMaterial3D_a2cjt")
+[sub_resource type="BoxMesh" id="BoxMesh_3hoaq"]
+material = SubResource("StandardMaterial3D_fy83q")
+size = Vector3(3, 3, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_j1220"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xe0oq"]
+size = Vector3(3, 3, 3)
 
-[node name="Destructible Box" type="RigidBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hoaq"]
+size = Vector3(3, 3, 3)
+
+[node name="DestructibleBox" type="Node3D"]
+script = ExtResource("1_f30tq")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 15
 continuous_cd = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_gysgv")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_3hoaq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.045771837, 0)
-shape = SubResource("BoxShape3D_j1220")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_xe0oq")
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_a2cjt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
+shape = SubResource("BoxShape3D_3hoaq")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_3ii2w")
+volume_db = -5.0
+
+[connection signal="body_entered" from="RigidBody3D/Area3D" to="RigidBody3D/Area3D" method="_on_body_entered"]

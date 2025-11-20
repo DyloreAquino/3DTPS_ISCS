@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds7nxbf1tk12l"
-path.s3tc="res://.godot/imported/red-fabric-cloth-texture-background-detail-textile-material-close-up-133929668.webp-c5f85b399ac948915420a38f96b53bbb.s3tc.ctex"
+uid="uid://dqqjuyjknwrwe"
+path.s3tc="res://.godot/imported/Spinnen_Bein_tex_COLOR_.jpg-25bb2ed5a8e4fbc5b00722111cc52653.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/red-fabric-cloth-texture-background-detail-textile-material-close-up-133929668.webp"
-dest_files=["res://.godot/imported/red-fabric-cloth-texture-background-detail-textile-material-close-up-133929668.webp-c5f85b399ac948915420a38f96b53bbb.s3tc.ctex"]
+source_file="res://Assets/textures/Spinnen_Bein_tex_COLOR_.jpg"
+dest_files=["res://.godot/imported/Spinnen_Bein_tex_COLOR_.jpg-25bb2ed5a8e4fbc5b00722111cc52653.s3tc.ctex"]
 
 [params]
 

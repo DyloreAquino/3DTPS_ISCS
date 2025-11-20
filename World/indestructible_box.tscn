@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi2mvvph63y8q"]
+
+[ext_resource type="Texture2D" uid="uid://di2pf7rcagkpa" path="res://Assets/the-texture-of-a-silvery-light-shiny-scratched-aluminum-globule-of-iron-with-rusty-spots-interspersed-the-background-free-photo.jpg" id="1_561ia"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lo8s"]
+albedo_texture = ExtResource("1_561ia")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ge1m0"]
+material = SubResource("StandardMaterial3D_3lo8s")
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1220"]
+size = Vector3(3, 3, 3)
+
+[node name="IndestructibleBox" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 15
+continuous_cd = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ge1m0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.045771837, 0)
+shape = SubResource("BoxShape3D_j1220")

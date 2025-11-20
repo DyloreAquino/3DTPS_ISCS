@@ -17,9 +17,11 @@ func _process(delta):
 		if isShooting:
 			shootTimer += delta
 			if shootTimer > 0.15:
+				$AudioStreamPlayer3D.play()
 				$RigidBodyProjectile._set_weapon_projectile(self)
 				shootTimer = 0.0
 		else:
+			$AudioStreamPlayer3D.play()
 			$RigidBodyProjectile._set_weapon_projectile(self)
 			isShooting = true
 			shootTimer = 0.0

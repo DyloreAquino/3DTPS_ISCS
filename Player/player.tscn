@@ -50,11 +50,13 @@ sprint_fov = 100.0
 [node name="EdgeSpring" type="SpringArm3D" parent="Camera System"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.60629535, -1.2223463)
 shape = SubResource("SphereShape3D_4ntmi")
+margin = 0.1
 
 [node name="RearSpring" type="SpringArm3D" parent="Camera System/EdgeSpring"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.2223464, 0.60629535, 0.5079438)
 shape = SubResource("SphereShape3D_btcbx")
 spring_length = 1.5
+margin = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="Camera System/EdgeSpring/RearSpring"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0.17575788, 1.2836767)
@@ -100,6 +102,8 @@ script = ExtResource("11_5htga")
 
 [node name="AimWalk" type="Node" parent="State Machine/Unarmed/Unarmed State Machine"]
 script = ExtResource("12_p5o4e")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
 
 [connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="PlayerMesh" method="_on_sprint_sprint_end"]
 [connection signal="sprint_end" from="State Machine/Unarmed/Unarmed State Machine/Sprint" to="Camera System" method="_on_sprint_end"]
