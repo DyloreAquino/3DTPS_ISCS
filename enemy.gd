@@ -32,6 +32,7 @@ func update_target_location(target_location):
 func die():
 	can_move = false
 	animation_player.play("die")
+	$AudioStreamPlayer3D.play()
 	
 	await animation_player.animation_finished
 	

@@ -12,7 +12,7 @@ func _on_body_entered(body: Node) -> void:
 	plosion.global_position = self.global_position
 	plosion.emit_explosion(body.is_in_group("Enemy"))
 	$MeshInstance3D.visible = false
-	call_deferred("disable_colision")
+	disable_collision.call_deferred()
 	if body.is_in_group("Enemy"):
 		$hit_enemy.play()
 	else:
@@ -22,7 +22,7 @@ func _on_body_entered(body: Node) -> void:
 	
 func play_audios():
 	$MeshInstance3D.visible = false
-	call_deferred("disable_colision")
+	disable_collision.call_deferred()
 	$hit_not_enemy.play()
 	$hit_enemy.play()
 	await get_tree().create_timer(0.8).timeout

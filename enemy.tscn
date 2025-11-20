@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://doy3g15s063tf"]
+[gd_scene load_steps=42 format=4 uid="uid://doy3g15s063tf"]
 
 [ext_resource type="Script" uid="uid://vbksurh8oa7l" path="res://enemy.gd" id="1_epg4t"]
 [ext_resource type="Texture2D" uid="uid://dqqjuyjknwrwe" path="res://Assets/textures/Spinnen_Bein_tex_COLOR_.jpg" id="1_iifgy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://caqfv7x6mqm36" path="res://Assets/textures/Spinnen_Bein_tex.jpg" id="3_3yqyl"]
 [ext_resource type="Texture2D" uid="uid://ctlsg3xo6uis3" path="res://Assets/textures/SH3.png" id="4_wujgv"]
 [ext_resource type="Script" uid="uid://clcvvqbaclbk3" path="res://hitbox.gd" id="6_3yqyl"]
+[ext_resource type="AudioStream" uid="uid://cjhujenh4hasx" path="res://Assets/audio/hit-flesh-02-266309.mp3" id="7_wujgv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iifgy"]
 radius = 1.0
@@ -7458,6 +7459,10 @@ viewport_path = NodePath("CharacterBody3D/Hitbox/SubViewport")
 
 [node name="Enemy" type="Node3D" groups=["Enemy"]]
 script = ExtResource("1_epg4t")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_wujgv")
+volume_db = 10.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 

@@ -13,7 +13,7 @@ func _on_body_entered(body):
 		health -= 25
 		if health <= 0:
 			enemy.die()
-			call_deferred("disable_collision")
+			disable_collision.call_deferred()
 
 
 func destroy_bullet(bullet):
@@ -25,3 +25,4 @@ func destroy_bullet(bullet):
 
 func disable_collision():
 	$CollisionShape3D.disabled = true
+	$"../CollisionShape3D".disabled = true
